@@ -1,7 +1,5 @@
 import pyglet
-
 import button
-import terminal
 from pyglet.window import mouse
 
 batch = pyglet.graphics.Batch()
@@ -38,11 +36,8 @@ class Button:
         else:
             return False
 
-    def on_pressed(self):
-        print("Help me! </3")
-        user_cmd = input(">> ")
-        print(user_cmd)
-
+    def on_pressed(self, press_type, termi):
+        termi.action(press_type)
 
     def draw(self):
         self.sprite.draw()

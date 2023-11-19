@@ -1,6 +1,5 @@
 import pyglet
 import termi
-import terminal
 import button
 from random import randint
 
@@ -38,13 +37,18 @@ buttonPlay = button.Button(image="Sprites/termi-toy.png", func="play",
                            scale=1,
                            x=145, y=180)
 
+pyglet.clock.schedule_interval(termi.termi_sadness, 10.0, myTermi)
 @window.event
 def on_mouse_press(x, y, click, modifiers):
     if click == mouse.LEFT:
         if (myTermi.xW > x > myTermi.x and myTermi.yH > y > myTermi.y) and myTermi.idle:
             myTermi.on_pressed()
-        elif buttonTerminal.check_over(x,y) and not terminal.terminal_open:
-            buttonTerminal.on_pressed()
+        elif buttonTerminal.check_over(x,y):
+            buttonTerminal.on_pressed("terminal", myTermi)
+        elif buttonPlay.check_over(x,y):
+            buttonPlay.on_pressed("play", myTermi)
+        elif buttonFood.check_over(x,y):
+            buttonFood.on_pressed("food", myTermi)
 
 
 @window.event
