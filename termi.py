@@ -41,11 +41,23 @@ def termi_sadness(dt, termi):
     if termi.termi_food > 5 and termi.termi_fun > 7:
         termi.termi_food -= 5
         termi.termi_fun -= 7
+    if termi.termi_food < 20 and \
+            termi.termi_fun < 15 and \
+            not termi.termi_sad:
+        termi.termi_sad = True
+        termi.change_sprite("Sprites/termi-sleepy.gif")
+    elif termi.termi_food > 20 and \
+            termi.termi_fun > 15 and \
+            termi.termi_sad:
+        termi.termi_sad = False
+        termi.change_sprite("Sprites/termiIdle.gif")
 
 
 class Termi:
     termi_food = 50
     termi_fun = 50
+
+    termi_sad = False
 
     x = 0
     y = 0
@@ -73,6 +85,9 @@ class Termi:
         self.__init__(sprite=sprite, x=self.x, y=self.y, scale=self.scale)
 
     def on_pressed(self):
+        if(self.termi_sad):
+            print("waaa :^:")
+            return
         print("meow~")
         self.change_sprite(termiGrab)
         self.idle = False
@@ -86,9 +101,9 @@ class Termi:
             self.command_action(user_cmd)
 
         elif shop_type == "food":
-            print("My developers were too greedy ;^;")
+            print("Buy the food DlC to feed him! - $500.99")
         elif shop_type == "play":
-            print("My owners forgot to develop that ;^;")
+            print("Buy the play DLC to play with him! - $899.99")
 
     def command_action(self, user_cmd):
         if user_cmd == "give termi food": # or "feed termi":
@@ -96,11 +111,11 @@ class Termi:
             if randint(0, 10) % 2 == 1:
                 output_lines(load_good_foodlines())
                 print("It was well worth it!! :)")
-            self.termi_food += 4
+            self.termi_food += 16
         elif user_cmd == "play with termi": #or "let him PLAY":
             print("Ehehehe~ <3")
-            # print(output_lines(load_toy_reactions()))
-            self.termi_fun += 6
+            print(output_lines(load_toy_reactions()))
+            self.termi_fun += 20
         elif user_cmd == "check on termi":
             print("Food: " + str(self.termi_food) + " | Fun: " + str(self.termi_fun))
         else:
