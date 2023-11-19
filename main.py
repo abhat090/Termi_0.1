@@ -2,6 +2,7 @@ import pyglet
 import termi
 import terminal
 import button
+from random import randint
 
 from pyglet.window import mouse
 from pyglet.gl import *
