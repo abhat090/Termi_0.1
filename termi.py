@@ -91,7 +91,7 @@ class Termi:
         print("meow~")
         self.change_sprite(termiGrab)
         self.idle = False
-        pyglet.clock.schedule_once(termi_timer, 1.2, termi=self,
+        pyglet.clock.schedule_once(termi_timer, 1.6, termi=self,
                                    sprite=termiIdle, idle=True)
 
     def action(self, shop_type):

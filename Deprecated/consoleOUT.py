@@ -2,7 +2,7 @@ from random import randint
 
 def load_bad_foodlines():
   #Take input from touch lines from ChatGPT
-  inputFile = open("lines.txt")
+  inputFile = open("../TermiText/lines.txt")
   badLineList = []
   for line in inputFile:
     voice = line.split("\n")
@@ -11,7 +11,7 @@ def load_bad_foodlines():
 
 def load_touch_lines():
   #Take input from bad food lines from ChatGPT
-  inputFile = open("lines.txt")
+  inputFile = open("../TermiText/lines.txt")
   lineList = []
   for line in inputFile:
     voice = line.split("\n")
@@ -20,7 +20,7 @@ def load_touch_lines():
 
 def load_good_foodlines():
   # Take input from good food lines from ChatGPT
-  inputFile = open("goodFood.txt")
+  inputFile = open("TermiText/goodFood.txt")
   goodLineList = []
   for line in inputFile:
     voice = line.split("\n")
@@ -29,7 +29,7 @@ def load_good_foodlines():
 
 def load_toy_reactions():
   # Take input from toy reactions from ChatGPT
-  inputFile = open("toy_react.txt")
+  inputFile = open("../TermiText/toy_react.txt")
   toyList = []
   for line in inputFile:
     voice = line.split("\n")
